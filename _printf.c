@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 				(*ptr == 'c')
 					count += _putchar(va_arg(args, int));
 
-			else if (*ptr == 's')
+			else if (*ptr == 'S')
 
 				count += print_string(va_arg(args, char *));
 
