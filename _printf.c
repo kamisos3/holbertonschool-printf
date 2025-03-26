@@ -1,42 +1,45 @@
-#include <unistd.h>
-#include <string.h>
-#include <stdarg.h>
 #include "main.h"
+#include <stdarg.h>
 /**
- * _printf - Prints output accotding to format
- * @format: list of all argument types
- *
- *
- * Return: Output according to format
+ *_printf - Custom implementation of printf
+ *@format: Format strign with specifiers
+ *Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	va_list args;/*Inititalizing argument list*/
+	va_list args;
 	int count = 0;
+	const char *ptr;
 
+	if (format == NULL)
+		return (-1);
 
-	va_start(args, format);/*Initializes argument lis*/
+	va_start(args, format);
 
-	while (*format)
+	for (ptr = format; *ptr != '\0'; ptr++)
 	{
-		if (*format == '%') /*If % is found*/
+		if (*ptr == '%')/*check for format specifier*/
 		{
-			format++;/*Moves pointer to next character*/
-			if (*format == 'c') /*Manages %c, characters*/
-				count += _putchar(va_arg(args, int));
-			else if (*format == 's')/*Manages strings %s*/
+			ptr++;
+			if
+				(*ptr == 'c')
+					count += _putchar(va_arg(args, int));
+
+			else if (*ptr == 's')
+
 				count += print_string(va_arg(args, char *));
-			else if (*format == '%') /*Mananages characters %%*/
+
+			else if (*ptr == '%')
+
 				count += _putchar('%');
+			{
+				count += _putchar('%');
+				count += _putchar(*ptr);
+			}
 		}
 		else
-		{
-			count += _putchar(*format); /*Prints '%' if format is invalid*/
-		}
-		format++;
+			count += _putchar(*ptr);
 	}
-	else
-}
-return(count);
-va_end(args);
+	va_end(args);
+	return (count);
 }
