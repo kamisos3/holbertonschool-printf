@@ -1,6 +1,11 @@
-#ifndef MAIN
-#define MAIN
+#include <stdarg.h>
+#include <unistd.h>
 
+#ifndef MAIN_H
+#define MAIN_H
+/*Helper documents and prototype being used*/
+int _putchar(char c);
 int _printf(const char *format, ...);
+int print_string(char *str);
 
 #endif
