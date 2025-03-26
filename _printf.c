@@ -1,9 +1,10 @@
-#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 #include <stdarg.h>
 #include "main.h"
 /**
- * _printf - Can print any type of argument
- * @format: list of all argument types 
+ * _printf - Prints output accotding to format
+ * @format: list of all argument types
  *
  *
  * Return: Output according to format
@@ -11,37 +12,34 @@
 int _printf(const char *format, ...)
 {
 	va_list args;/*Inititalizing argument list*/
-	int i = 0;
-	char *str, *separator = "";
+	int count = 0;
 
-	va_start(args, format);
+	if (format == NULL)/*Invalid inputs will return NULL*/
+		return (-1);
 
-	while (format && format[i])
+	va_start(args, format);/*Initializes argument lis*/
+
+	while (*format)
 	{
-		switch (format[i])
+		format++;
+		if (*format == '%') /*If % is found*/
 		{
-			case 'c':/*If its characters*/
-				printf("%s%c", separator, va_arg(args, int));
-				break;
-
-			case '%':/*Also prints characters*/
-				printf("%%", separator, va_arg(args, int));
-				break;
-
-			case 's':/*For strings*/
-				if (!str)
-				{
-					str = "(nil)";
-				}
-				printf("%s%s", separator, str);
-				break;
-			default:
-				i++;
-				continue;
+			format++;/*Moves pointer to next character*/
+			if (*format == 'c') /*Manages %c, characters*/
+				count += _putchar(va_arg(args, int));
+			else if (*format == 's')/*Manages strings %s*/
+				count += print_string(va_arg(args, char *));
+			else if (*format == '%') /*Mananages characters %%*/
+				count += _putchar('%');
 		}
-		separator = ", ";
-		i++;
+		else
+		{
+			count += _putchar(*format); /*Prints '%' if format is invalid*/
+		}
+		format++;
 	}
-	printf("\n");
-	va_end(args);
+	else
+}
+return(count);
+va_end(args);
 }
