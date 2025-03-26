@@ -3,7 +3,7 @@
 #include "main.h"
 /**
  * _printf - Can print any type of argument
- *
+ * @format: list of all argument types 
  *
  *
  * Return: Output according to format
@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (formar && format[i])
+	while (format && format[i])
 	{
 		switch (format[i])
 		{
@@ -25,8 +25,8 @@ int _printf(const char *format, ...)
 				break;
 
 			case '%':/*Also prints characters*/
-				printf("%%", separator, va_arg(args, int))
-					break;
+				printf("%%", separator, va_arg(args, int));
+				break;
 
 			case 's':/*For strings*/
 				if (!str)
@@ -39,8 +39,9 @@ int _printf(const char *format, ...)
 				i++;
 				continue;
 		}
-		printf("\n");
-		va_end(args);
+		separator = ", ";
+		i++;
 	}
-
-
+	printf("\n");
+	va_end(args);
+}
