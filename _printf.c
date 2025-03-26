@@ -14,14 +14,11 @@ int _printf(const char *format, ...)
 	va_list args;/*Inititalizing argument list*/
 	int count = 0;
 
-	if (format == NULL)/*Invalid inputs will return NULL*/
-		return (-1);
 
 	va_start(args, format);/*Initializes argument lis*/
 
 	while (*format)
 	{
-		format++;
 		if (*format == '%') /*If % is found*/
 		{
 			format++;/*Moves pointer to next character*/
