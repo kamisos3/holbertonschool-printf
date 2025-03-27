@@ -1,15 +1,14 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include "main.h"
 /**
- *_printf - Custom implementation of printf
- *@format: Format string with specifiers
- *Return: Number of characters printed
+ * _printf - Produces output depending on format
+ * @format: string composed of 0 or more directives
+ * Return: Number of characters
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
 
 	va_start(args, format);
 
@@ -18,42 +17,18 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
-				case 'c':
-					_putchar(1, &c, 1);
-					count++;
-					break;
-				case 's':
-					{
-						char *str = va_arg(args, char *);
-
-						if (!str) str = "(null)'";
-						while (*str)
-						{
-							_putchar(1, str, 1);
-							count++;
-							str++;
-						}
-						break;
-					}
-				case '%':
-					_putchar(1, '%', 1);
-					count++;
-					break;
+				_putchar(va_arg(args, int));
 			}
-			default:
-			_putchar(1, format, 1);
-			count++;
+			else if (*format == 's')
+			{
+				_putchar(va_arg(args, int));
+			}
+			_putchar(*format);
 		}
+		format++;
 	}
-	else
-	{
-		_putchar(1, format, 1);
-		count++;
-	}
-	format++;
-}
-va_end(args);
-return (count);
+	va_end(args);
+	return (0);
 }
