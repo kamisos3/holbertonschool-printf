@@ -1,46 +1,59 @@
-#include <stddef.h>
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 /**
  *_printf - Custom implementation of printf
- *@format: Format strign with specifiers
+ *@format: Format string with specifiers
  *Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	const char *ptr;
-
-	if (format == NULL)
-		return (-1);
 
 	va_start(args, format);
 
-	for (ptr = format; *ptr != '\0'; ptr++)
+	while (*format)
 	{
-		if (*ptr == '%')/*check for format specifier*/
+		if (*format == '%')
 		{
-			ptr++;
-			if
-				(*ptr == 'c')
-					count += _putchar(va_arg(args, int));
-
-			else if (*ptr == 'S')
-
-				count += print_string(va_arg(args, char *));
-
-			else if (*ptr == '%')
-
-				count += _putchar('%');
+			format++;
+			switch (*format)
 			{
-				count += _putchar('%');
-				count += _putchar(*ptr);
+				case 'c':
+					_putchar(1, &c, 1);
+					count++;
+					break;
+				case 's':
+					{
+						char *str = va_arg(args, char *);
+
+						if (!str) str = "(null)'";
+						while (*str)
+						{
+							_putchar(1, str, 1);
+							count++;
+							str++;
+						}
+						break;
+					}
+				case '%':
+					_putchar(1, '%', 1);
+					count++;
+					break;
 			}
+			default:
+			_putchar(1, format, 1);
+			count++;
 		}
-		else
-			count += _putchar(*ptr);
 	}
-	va_end(args);
-	return (count);
+	else
+	{
+		_putchar(1, format, 1);
+		count++;
+	}
+	format++;
+}
+va_end(args);
+return (count);
 }
