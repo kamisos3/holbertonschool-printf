@@ -1,7 +1,7 @@
+#include <stdio.h>
 #include <unistd.h>
 #include "main.h"
 #include <stdarg.h>
-
 /**
  * _printf - Custom implemematation of printf
  *@format: Format string with specifiers
