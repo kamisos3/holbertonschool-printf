@@ -1,46 +1,55 @@
 #include <unistd.h>
 #include "main.h"
+#include <stdarg.h>
+
 /**
- * _printf - Produces output depending on format
- * @format: string composed of 0 or more directives
- * Return: Number of characters
+ * _printf - Custom implemematation of printf
+ *@format: Format string with specifiers
+ *
+ *Return: Number of characters printed
  */
-int _printf(const char *format, ...)
+int _print(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	int *str;
+	char *str;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(args, format);
 
-	if (*format == '%')
+	while (*format)
 	{
-		format++;
-		switch (*format)
+		if (*format == '%')
 		{
-			case 'c':/*Handles characters*/
-				write(1, &va_arg(args, int) 1);
-				count++;
-				break;
-			case 's':/*Handles strings*/
-				str = va_arg(args, char *);
-				while (*str)
-				{
-					write(1, str++, 1);
-					count++;
-				}
-				break;
-			case '%':/*Literal % character cases*/
-				write(1, "%", 1);
-				count++;
-				break;
+			format++;
+			switch (*format)
+			{
+				case 'c': /*Handles characters */
+					count += _putchar(va_arg(args, int));
+					break;
+				case 's': /* Handlesstrings */
+					str = va_arg(args, char *);
+					if (!str)
+						str = "(null)"; /*Handle NULL string */
+					while (*str)
+						count += _putchar(*str++);
+					break;
+				case '%': /* Literal % character */
+					count += _putchar('%');
+					break;
+				default: /* IF unknown specifier, print % and the character */
+					count += _putchar('%');
+					count += _putchar(*format);
+			}
 		}
+		else
+		{
+			count += _putchar(*format);
+		}
+		format++;
 	}
-	write(1, format, 1);
-	count++;
-}
-format++;
-}
-return (count);
-va_end(args);
+	va_end(args);
+	return (count);
 }
