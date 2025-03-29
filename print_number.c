@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * print_number - For number inputs
- * @num: integer, number to print 
- * 
+ * @num: integer, number to print
+ *
  *
  * Return: Number of characters printed
  */
