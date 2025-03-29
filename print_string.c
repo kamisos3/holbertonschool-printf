@@ -1,4 +1,5 @@
-#include <stddef.h>
+#include <unistd.h>
+#include <stdarg.h>
 #include "main.h"
 /**
  *print_string - Print a string of characters
@@ -15,8 +16,8 @@ int print_string(char *str)
 
 	while (*str)
 	{
-		count += _putchar(*str++);
-
+		count += write(1, str, 1);
+		str++;
 	}
 	return (count);
 }
