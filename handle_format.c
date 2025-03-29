@@ -12,13 +12,13 @@ int handle_format(char format, va_list args)
 {
 	int count = 0;
 
-	if (format == 'c')
+	if (format == 'c')/*For character outputs*/
 	{
 		char c = (char)va_arg(args, int);
 
 		count += _putchar(c);
 	}
-	else if (format == 's')
+	else if (format == 's')/*Handles string*/
 	{
 		char *str = va_arg(args, char *);
 
@@ -28,7 +28,7 @@ int handle_format(char format, va_list args)
 	{
 		count += _putchar('%');
 	}
-	else if (format == 'd' || format == 'i')
+	else if (format == 'd' || format == 'i')/*Handles num and int*/
 	{
 		int num = va_arg(args, int);
 		count += print_number(num);
