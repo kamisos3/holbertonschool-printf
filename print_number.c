@@ -1,3 +1,4 @@
+#include <limits.h>
 #include "main.h"
 /**
  * print_number - For number inputs
@@ -9,6 +10,12 @@
 int print_number(int num)
 {
 	int count = 0;
+
+	if (num == INT_MIN)
+	{
+		count += print_string("-2147483648");
+		return (count);
+	}
 
 	if (num < 0)
 	{
