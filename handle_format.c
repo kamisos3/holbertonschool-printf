@@ -31,6 +31,7 @@ int handle_format(char format, va_list args)
 	else if (format == 'd' || format == 'i')/*Handles num and int*/
 	{
 		int num = va_arg(args, int);
+
 		count += print_number(num);
 	}
 
