@@ -9,37 +9,23 @@
  */
 int _printf(const char *format, ...)
 {
+
 	va_list args;
 	int count = 0;
 
 	va_start(args, format);
+
+	if (format == NULL)
+	{
+		return (0);
+	}
 
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1))
 		{
 			format++;
-			if (*format == 'c')
-			{
-				char c = (char)va_arg(args, int);
-
-				count += _putchar(c);
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-
-				count += print_string(str);
-				while (*str)
-				{
-					count += write(1, str, 1);
-					str++;
-				}
-			}
-			else if (*format == '%')
-			{
-				count += _putchar('%');
-			}
+			count += handle_format(*format, args);
 		}
 		else
 		{
