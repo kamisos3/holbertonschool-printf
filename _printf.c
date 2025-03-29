@@ -13,24 +13,33 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 
+	va_start(args, format);
+
 	if (format == NULL)
 	{
-		return (0);
+		return (-1);
 	}
-
-	va_start(args, format);
 
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		if (*format == '%')
 		{
-			format++;
-			count += handle_format(*format, args);
+			if (*format == '\0')
+				return (-1);
+			if (*format == '%')
+			{
+				count += _putchar('%');
+			}
+			else
+			{
+				count += handle_format(*format, args);
+			}
 		}
 		else
 		{
 			count += _putchar(*format);
 		}
+
 		format++;
 	}
 	va_end(args);
