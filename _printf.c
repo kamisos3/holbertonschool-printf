@@ -24,16 +24,8 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			if (*format == '\0')
-				return (-1);
-			if (*format == '%')
-			{
-				count += _putchar('%');
-			}
-			else
-			{
-				count += handle_format(*format, args);
-			}
+			format++;
+			count += handle_format(*format, args);
 		}
 		else
 		{
