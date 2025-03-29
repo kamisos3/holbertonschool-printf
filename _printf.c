@@ -19,7 +19,11 @@ int _printf(const char *format, ...)
 		if (*format == '%' && *(format + 1))
 		{
 			format++;
-			if (*format == 'c')
+			if (*format == '%')
+			{
+				count += write(1, "%", 1);
+			}
+			else if (*format == 'c')
 			{
 				char c = (char)va_arg(args, int);
 
@@ -35,10 +39,6 @@ int _printf(const char *format, ...)
 					count += write(1, str, 1);
 					str++;
 				}
-			}
-			else if (*format == '%')
-			{
-				count += write(1, "%", 1);
 			}
 		}
 		else
