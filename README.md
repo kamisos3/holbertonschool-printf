@@ -63,9 +63,13 @@ _printf usage example for this program:
 int main(void)
 {
     _printf("Hello, %s!\n", "world");
+
     _printf("Character: %c\n", 'H');
+
     _printf("Percentage: %%\n");
+
     return 0;
+
 }
 
 Authors
