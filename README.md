@@ -2,16 +2,16 @@
 
 Introduction
 
-The printf project was made in collaboration by Alejandro Garcia and Kamila Sostre. This function was made using the printf 
+The printf project was made in collaboration by Alejandro Garcia and Kamila Sostre. This function was made using the printf
 function with the goal of being able to count different types
 of inputted format. Creating this printf function required six
-different prototypes in .c document functions and a main.h for the prototypes used. 
-For further reference a man page was created with the functions, prototypes and specifiers described. 
+different prototypes in .c document functions and a main.h for the prototypes used.
+For further reference a man page was created with the functions, prototypes and specifiers described.
 
 Description
 
-The printf function is used to write in the program the given 
-input. It is the C language most used output function and one 
+The printf function is used to write in the program the given
+input. It is the C language most used output function and one
 of the first functions that programmers learn. This function p
 rints the string of characters thats been written as an input
  in the program. It's set with the prototype int main(), like in this is a general usage of the printf:

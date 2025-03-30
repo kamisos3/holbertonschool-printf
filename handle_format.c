@@ -10,27 +10,27 @@
  */
 int handle_format(char format, va_list args)
 {
-	int count = 0;
+	int count = 0;/*Initializes count, that checks character total*/
 
-	if (format == 'c')
+	if (format == 'c')/*Handles characters*/
 	{
 		char c = (char)va_arg(args, int);
 
 		count += _putchar(c);
 	}
-	else if (format == 's')
+	else if (format == 's')/*Handles string input*/
 	{
-		char *str = va_arg(args, char *);
+		char *str = va_arg(args, char *);/*Initializes pointer str*/
 
 		count += print_string(str);
 	}
-	else if (format == '%')
+	else if (format == '%')/*Handles '%' character*/
 	{
 		count += _putchar('%');
 	}
-	else if (format == 'd' || format == 'i')
+	else if (format == 'd' || format == 'i')/*Integer and number inputs*/
 	{
-		int num = va_arg(args, int);
+		int num = va_arg(args, int);/*Initializes int num*/
 
 		count += print_number(num);
 	}

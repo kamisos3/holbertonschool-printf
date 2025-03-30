@@ -10,19 +10,19 @@
 int _printf(const char *format, ...)
 {
 
-	va_list args;
+	va_list args;/*Declares argument list*/
 	int count = 0;
 
-	va_start(args, format);
+	va_start(args, format);/*Initializes argument list*/
 
-	if (format == NULL)
+	if (format == NULL)/*Verify if inputed format is NULL*/
 	{
 		return (-1);
 	}
 
-	while (*format)
+	while (*format)/*Deferencing pointer to get character*/
 	{
-		if (*format == '%')
+		if (*format == '%')/*For character % cases*/
 		{
 			format++;
 
@@ -34,10 +34,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			count += _putchar(*format);
+		count += _putchar(*format);
+/*count += returns character count to total ouput characters*/
 		}
 
-		format++;
+		format++;/*Moves pointer after the value its used*/
 	}
 	va_end(args);
 	return (count);
