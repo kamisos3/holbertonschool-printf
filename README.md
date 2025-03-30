@@ -20,9 +20,11 @@ rints the string of characters thats been written as an input
 
 int main(void)
 {
+
 printf("Hello!\n");
 
 return (0);
+
 }
 
 
@@ -62,6 +64,7 @@ _printf usage example for this program:
 
 int main(void)
 {
+
     _printf("Hello, %s!\n", "world");
 
     _printf("Character: %c\n", 'H');
