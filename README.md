@@ -1,83 +1,73 @@
-_printf
+\_printf
 
-Descripción
+Introduction
 
-Este proyecto es una implementación personalizada de la función printf en C. Fue desarrollado como parte del programa de Holberton School en colaboración con Kami.
+The printf project was made in collaboration by Alejandro Garcia and Kamila Sostre. This function was made using the printf 
+function with the goal of being able to count different types
+of inputted format. Creating this printf function required six
+different prototypes in .c document functions and a main.h for the prototypes used. 
+For further reference a man page was created with the functions, prototypes and specifiers described. 
 
-Recursos
+Description
 
-Para completar este proyecto, utilizamos los siguientes recursos:
+The printf function is used to write in the program the given 
+input. It is the C language most used output function and one 
+of the first functions that programmers learn. This function p
+rints the string of characters thats been written as an input
+ in the program. It's set with the prototype int main(), like in this is a general usage of the printf:
 
-Secrets of printf
-
-Group Projects concept page
-
-Flowcharts concept page
-
-man 3 printf
-
-Requisitos
-
-Editores permitidos: vi, vim, emacs
-
-Compilación en Ubuntu 20.04 LTS con gcc usando las opciones:
-
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89
-
-Todos los archivos deben terminar con una nueva línea.
-
-Se debe incluir un archivo README.md en el directorio raíz del proyecto.
-
-El código debe seguir el estilo Betty (verificado con betty-style.pl y betty-doc.pl).
-
-No se permiten variables globales.
-
-No más de 5 funciones por archivo.
-
-El prototipo de todas las funciones debe estar en el archivo de cabecera main.h.
-
-Todos los archivos de encabezado deben estar protegidos contra inclusiones múltiples.
-
-Funciones y Macros Permitidos
-
-En la implementación de _printf, solo se pueden utilizar las siguientes funciones y macros de C estándar:
-
-write (man 2 write)
-
-malloc (man 3 malloc)
-
-free (man 3 free)
-
-va_start (man 3 va_start)
-
-va_end (man 3 va_end)
-
-va_copy (man 3 va_copy)
-
-va_arg (man 3 va_arg)
-
-Uso
-
-Para compilar el programa, ejecuta:
-
-make
-
-O si prefieres compilar manualmente:
-
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o printf
-
-Ejemplo de uso:
-
-#include "main.h"
+#include <stdio.h>
 
 int main(void)
 {
-    _printf("Hola, %s!\n", "Kami");
-    return (0);
+printf("Hello!\n");
+
+return (0);
 }
 
-Autores
 
-AleG
+Used functions and macros for the printf function:
 
-Kami
+- write
+- va_start
+- va_end
+- va_copy
+- va_arg
+
+Prototypes used:
+
+- int _printf(const char *format, ...);
+
+
+Compilation
+
+All files will be compiled using the following command, options and flags:
+
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o printf
+
+
+Format Specifiers:
+
+The _printf function currently supports the following conversion specifiers:
+
+- %c : Prints a character
+- %s : Prints a string
+- %% : Prints the percentage symbol
+- %d : Prints number
+- %i : Prints a signed integer (as 'd', it prints numbers
+
+_printf usage example for this program:
+
+#include <stdio.h>
+
+int main(void)
+{
+    _printf("Hello, %s!\n", "world");
+    _printf("Character: %c\n", 'H');
+    _printf("Percentage: %%\n");
+    return 0;
+}
+
+Authors
+[Alejandro Garcia - https://github.com/GerAle30]
+[Kamila Sostre - https://github.com/kamisos3]
