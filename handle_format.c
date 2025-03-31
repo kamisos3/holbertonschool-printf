@@ -40,6 +40,30 @@ int handle_format(char format, va_list args)
 
 		count += print_binary(num);
 	}
+	else if (format == 'u')/*For unsigned ints*/
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		count += print_un(num);
+	}
+	else if (format == 'o')/*Handle octal*/
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		count += print_octal(num);
+	}
+	else if (format == 'x')/*Lowercase hex*/
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		count += print_hex(num, 0);
+	}
+	else if (format == 'X')/*Uppercase hex*/
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		count += print_hex(num, 1);
+	}
 	else
 	{
 		count += _putchar('%');

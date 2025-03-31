@@ -10,5 +10,8 @@ int _putchar(char c);
 int handle_format(char format, va_list args);
 int print_number(int num);
 int print_binary(unsigned int num);
+int print_un(unsigned int num);
+int print_octal(unsigned int num);
+int print_hex(unsigned int num, int uppercase);
 
 #endif /* MAIN_H */
