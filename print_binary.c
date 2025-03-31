@@ -2,7 +2,7 @@
 #include "main.h"
 /**
  * print_binary - Makes unsigned int to binary, and prints it
- * @num: Unsigne integer
+ * @num: Unsigned integer
  *
  * Return: Number of characters printed
  */
