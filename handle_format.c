@@ -34,6 +34,12 @@ int handle_format(char format, va_list args)
 
 		count += print_number(num);
 	}
+	else if (format == 'b')/*For binary numbers*/
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		count += print_binary(num);
+	}
 	else
 	{
 		count += _putchar('%');
