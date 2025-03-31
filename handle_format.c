@@ -24,6 +24,12 @@ int handle_format(char format, va_list args)
 
 		count += print_string(str);
 	}
+	else if (format == 'S')/*Handle special characters*/
+	{
+		char *str = va_arg(args, char *);
+
+		count += print_string(str);
+	}
 	else if (format == '%')/*Handles '%' character*/
 	{
 		count += _putchar('%');

@@ -34,8 +34,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-		count += _putchar(*format);
-/*count += returns character count to total ouput characters*/
+			count += _putchar(*format);
+			/*count += returns character count to total ouput characters*/
 		}
 
 		format++;/*Moves pointer after the value its used*/
